@@ -1,0 +1,8 @@
+# The marketing site is meant to be found.
+User-agent: *
+Allow: /
+
+# The app and the platform console are not.
+Disallow: /login
+Disallow: /signup
+Disallow: /admin

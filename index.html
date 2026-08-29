@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      Every tag below is static on purpose. This is a React SPA, so anything
+      rendered by JavaScript is invisible to the crawlers and preview-scrapers
+      that never run it — WhatsApp's link preview above all, which is how an
+      Indian parent will actually receive this page: forwarded by another
+      parent, in a school group.
+    -->
+    <title>
+      ParentAI — teach your child tonight, in your own language | 30-minute
+      guided study sessions
+    </title>
+    <meta
+      name="description"
+      content="ParentAI gives you a 30-minute plan for tonight's topic: a script to read aloud in Hindi, Marathi, Tamil, Bengali or Urdu, and English-medium practice for your child. Built for parents, not another app for kids. Free for 7 days."
+    />
+
+    <!--
+      %SITE_ORIGIN% is substituted at build time from the single constant in
+      vite.config.ts. Do not hardcode a domain here: it appears four times
+      below, and hand-written copies go out of step with each other.
+    -->
+    <link rel="canonical" href="%SITE_ORIGIN%/" />
+    <meta name="theme-color" content="#4A7740" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ParentAI" />
+    <!-- Kept in step with the <h1>. A share card promising a headline the page
+         no longer carries is a small bait-and-switch, and this card IS how the
+         page travels. -->
+    <meta
+      property="og:title"
+      content="Teach your child tonight — in your own language"
+    />
+    <meta
+      property="og:description"
+      content="Photograph the page, and ParentAI writes tonight's 30-minute lesson: what to say, in your language, and what to ask, in theirs. You teach. It plans."
+    />
+    <!--
+      Absolute, and not negotiable. Scrapers fetch these from their own servers
+      with no page context, so a relative "/og.png" resolves against nothing and
+      WhatsApp still draws the card — with a grey hole where the picture goes.
+    -->
+    <meta property="og:url" content="%SITE_ORIGIN%/" />
+    <meta property="og:image" content="%SITE_ORIGIN%/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="ParentAI — a parent's script in Hindi beside a child's English practice questions"
+    />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="%SITE_ORIGIN%/og.png" />
+
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+
+    <!--
+      Fraunces for display and Inter for text, matching the product's own type
+      system (docs/03-design-system.md). Noto Sans Devanagari is loaded HERE and
+      only here, because the hero shows a real Hindi script beside real English
+      practice — the one claim on the page that has to be demonstrated rather
+      than described, and a system fallback would undercut it on the exact
+      sentence it is meant to prove.
+
+      preconnect first, so the font request does not wait on a fresh DNS+TLS
+      handshake on a mobile connection.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "ParentAI",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Android, iOS, Web",
+        "description": "Guided 30-minute learning sessions a parent runs with their child, with the teaching script in the family's home language and practice in the child's school medium. For grades 1 to 8 across CBSE, ICSE and state boards.",
+        "url": "%SITE_ORIGIN%/",
+        "offers": {
+          "@type": "Offer",
+          "price": "499",
+          "priceCurrency": "INR"
+        },
+        "author": { "@type": "Organization", "name": "ParentAI" }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
