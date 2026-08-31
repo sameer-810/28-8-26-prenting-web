@@ -115,7 +115,25 @@ console.log("\n=== 2. Prices still match the API ===");
  * product charges ₹599 is a consumer-law problem, not a typo.
  */
 if (!fs.existsSync(PLANS_JS)) {
-  check("the API's plans.js was found", false, PLANS_JS);
+  /**
+   * Skipped, loudly, rather than failed — but only in CI.
+   *
+   * This check reads the API's `plans.js` from a SIBLING repository. On a
+   * developer's machine both are checked out and its absence means something is
+   * wrong, so it fails. In CI only this repo exists, and failing there would
+   * either turn the build permanently red or teach everyone to ignore it.
+   *
+   * It is printed either way. A check that quietly disappears is worse than one
+   * that fails, because nobody notices it stopped running.
+   */
+  if (process.env.CI) {
+    console.log(
+      "  SKIP  price drift against the API — plans.js is not checked out here.\n" +
+        "        Run `npm run verify` locally before a release, where it is.",
+    );
+  } else {
+    check("the API's plans.js was found", false, PLANS_JS);
+  }
 } else {
   const plansSource = fs.readFileSync(PLANS_JS, "utf8");
   const apiPaise = [...plansSource.matchAll(/priceInPaise:\s*(\d+)/g)].map((m) => Number(m[1]));

@@ -1,0 +1,45 @@
+name: CI
+
+# Build and verify on every push.
+#
+# `npm run verify` is 50 checks in a real browser, and it is the only thing
+# standing between a price change in the API and a marketing page still
+# advertising the old number — a page quoting ₹499 while the product charges
+# ₹599 is a consumer-law problem, not a typo.
+#
+# One check cannot run here: the price comparison reads the API's plans.js from
+# a sibling repository that CI does not check out. It prints a visible SKIP
+# rather than failing, and it still runs — and fails — on a developer machine,
+# where both repos exist. Run `npm run verify` locally before a release.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: Build
+        run: npm run build
+
+      - name: Verify
+        run: npm run verify
