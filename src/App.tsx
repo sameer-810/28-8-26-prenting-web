@@ -4,8 +4,6 @@ import { useReveal } from "./useReveal";
 /**
  * The ParentAI marketing page.
  *
- * WHO THIS IS WRITTEN FOR
- *
  * A parent in an Indian household, on a phone, probably on WhatsApp, probably
  * forwarded this by another parent from a school group. They are not evaluating
  * an ed-tech category. They have a specific worry — their child is behind in

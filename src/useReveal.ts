@@ -3,8 +3,6 @@ import { useEffect } from "react";
 /**
  * Fades sections in as they scroll into view.
  *
- * TWO THINGS THAT ARE NOT DECORATION
- *
  * 1. It respects `prefers-reduced-motion`. A parent who has asked their phone
  *    to stop animating things has asked this page too, and vestibular triggers
  *    are not a matter of taste. When it is set, every section is revealed
