@@ -164,11 +164,11 @@ export const languages = [
 
 /** The five phases of a session, from the product spec. Thirty minutes total. */
 export const phases = [
-  { minutes: "0–5", title: "Concept", body: "You read a short script aloud, in your language." },
-  { minutes: "5–10", title: "Teaching", body: "You work one example through with them." },
-  { minutes: "10–20", title: "Practice", body: "Five questions, in their school medium." },
-  { minutes: "20–25", title: "Mock test", body: "Three more, unaided, to see what stuck." },
-  { minutes: "25–30", title: "Revision", body: "Built from exactly what they got wrong." },
+  { minutes: "10", title: "Concept", body: "You read a short script aloud, in your language." },
+  { minutes: "8", title: "Teaching", body: "You work one example through with them." },
+  { minutes: "6", title: "Practice", body: "Five questions, in their school medium." },
+  { minutes: "3", title: "Mock test", body: "Three more, unaided, to see what stuck." },
+  { minutes: "3", title: "Revision", body: "Built from exactly what they got wrong." },
 ];
 
 /* Says it once, in the one place a developer running the site will see it.
